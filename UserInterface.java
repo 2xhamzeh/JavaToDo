@@ -24,7 +24,7 @@ public class UserInterface {
 		
 		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);//so the frame closes when we press x and not minimize or defocus
 		frame.setSize(400, 600); // size of frame
-		//frame.setResizable(false); // disable frame resize so it always has this size
+		frame.setResizable(false); // disable frame resize so it always has this size
 		setUp(); // to setup the main parts of the frame
 		
 		frame.setVisible(true); // so we can see the frame/window
