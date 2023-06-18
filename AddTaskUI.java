@@ -89,6 +89,7 @@ public class AddTaskUI extends JPanel{
 			}
 		}
 		ui.redisplay();
+		memory.update();
 		
 	}
 }
