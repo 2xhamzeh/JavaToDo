@@ -5,6 +5,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class UserInterface {
+	
+
 	// main frame
 	private JFrame frame;
 	private JPanel tasks;
@@ -14,7 +16,7 @@ public class UserInterface {
 
 	// constructor of UserInterface
 	public UserInterface(Memory memory) {
-		
+
 		this.memory = memory;
 		
 		// create the frame with a title
@@ -34,6 +36,7 @@ public class UserInterface {
 	private void setUp() {
 		//the main panel in the frame
 		JPanel pane = new JPanel();
+
 		// layout of main panel 
 		pane.setLayout(new BorderLayout());
 		

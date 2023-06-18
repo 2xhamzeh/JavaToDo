@@ -23,7 +23,7 @@ public class Memory {
 		tasks = new ArrayList<>();
 		
 		file = new File("src/Memory/memory.txt");
-		System.out.println(file.length());
+		
 		// we only read the file if it has something to be read
 		if(file.length() != 0) {
 			try {

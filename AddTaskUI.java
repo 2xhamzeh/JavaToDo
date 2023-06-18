@@ -3,6 +3,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Iterator;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -15,6 +16,7 @@ public class AddTaskUI extends JPanel{
 	// main parts
 	private JTextField textField;
 	private JButton button;
+	private JButton clearButton; // to remove all checked items
 
 	// backEnd item, add tasks to it when add is pressed
 	private Memory memory;
@@ -25,6 +27,7 @@ public class AddTaskUI extends JPanel{
 	public AddTaskUI(UserInterface ui, Memory m) {
 		textField = new JTextField();
 		button = new JButton("Add");
+		clearButton = new JButton("Clear");
 
 		memory = m;
 
@@ -41,6 +44,7 @@ public class AddTaskUI extends JPanel{
 		this.add(Box.createHorizontalStrut(5)); // space on left of TextField
 		this.add(textField);
 		this.add(button);
+		this.add(clearButton);
 		// MouseListener when add is pressed
 		button.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
@@ -57,6 +61,14 @@ public class AddTaskUI extends JPanel{
 				 }
 			  }
 			});
+		
+		clearButton.addMouseListener(new MouseAdapter() {
+			public void mousePressed(MouseEvent e) {
+				clear();
+			}
+		});
+
+		
 	}
 	
 	// called when add or enter is pressed
@@ -66,5 +78,17 @@ public class AddTaskUI extends JPanel{
 			textField.setText("");
 			ui.redisplay();
 		}
+	}
+	
+	// gets called when the clear button is called
+	private void clear() {
+		Iterator<Task> it = memory.getTasks().iterator();
+		while(it.hasNext()) {
+			if(it.next().getIsDone()) {
+				it.remove();
+			}
+		}
+		ui.redisplay();
+		
 	}
 }

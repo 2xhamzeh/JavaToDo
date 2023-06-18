@@ -32,7 +32,9 @@ public class TaskUI extends JPanel{
 
 		removeButton = new JButton("Remove");
 		
-		normalText = task.getText(); // normal text
+		// wrapping the text in html allows the text to wrap when the window is too small
+		// one problem is: if the text has a very long word (more than app width) it will not wrap and button will move
+		normalText = "<HTML>" + task.getText() + "</HTML>"; // normal text
 		crossedText = "<HTML><s>" + task.getText() + "</s></HTML>"; // this text is crossed version of parameter
 		
 		// set the initial text based on the task state (crossed or normal)
@@ -42,7 +44,9 @@ public class TaskUI extends JPanel{
 			text = new JLabel(normalText);
 		}
 		
+		
 		setup(); // setup main parts of a ToDo item
+		
 	}
 	
 	private void setup() {
@@ -58,6 +62,8 @@ public class TaskUI extends JPanel{
 		removeButton.addActionListener(e -> action());
 		// to change text style when CheckBox is clicked
 		checkbox.addActionListener(e -> checked());
+
+
 
 		
 	}
